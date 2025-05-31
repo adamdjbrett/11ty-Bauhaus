@@ -8,7 +8,7 @@ image: "/img/logo.png"
 language: "en"
 locale: en_US
 favicon: /img/logo.png
-url: ""
+url: "https://bauhaus.000000076.xyz/"
 metasocial:
   - facebook: "https://www.facebook.com/"
   - twitteruser: "@username"
