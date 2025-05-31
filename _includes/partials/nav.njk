@@ -1,0 +1,21 @@
+  <div class="noise-overlay"></div>
+  <div class="grid-background"></div>
+  <div class="custom-cursor"></div>
+  <div class="custom-cursor-dot"></div>
+  <button class="mobile-menu-toggle" aria-label="Toggle navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <nav class="brutal-navbar">
+    <div class="container">
+      <div class="brutal-nav-inner">
+        <div class="brutal-brand">{{metadata.navbar.title}}</div>
+        <ul class="brutal-nav-links">
+		{% for n in metadata.navbar.list %}
+          <li><a href="{{n.url}}" class="brutal-nav-link glitch-hover">{{n.nav}}</a></li>
+		  {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>

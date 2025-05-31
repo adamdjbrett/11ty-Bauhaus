@@ -1,0 +1,90 @@
+---
+layout: base
+title: BLOG LIST
+description: All brutal posts
+pagination:
+  data: collections.posts
+  size: 6
+  alias: posts
+  reverse: true
+permalink: "blog/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+<section class="col-lg-12">
+          <div class="section-header">
+            <div class="brutal-section-number">01</div>
+            <h2 class="fw-bold brutal-title" id="recent-title">{{title}}<span class="blink-cursor">_</span></h2>
+          </div>
+          <div class="row row-cols-1 row-cols-md-3 g-4">
+           
+      {%- for post in posts %}
+        <div class="col">
+              <article class="brutal-card stagger-item">
+                <div class="card-image-wrapper">
+                  <a href="{{post.url}}"><img src="{{post.data.image or metadata.image}}" class="card-img" alt="{{post.data.image}}"></a>
+				  {% if post.data.badge %}<div class="brutal-indicator pulse-effect">{{post.data.badge}}</div>{% endif %}
+                </div>
+                <div class="card-content">
+                  <div class="card-meta"><i class="fa-solid fa-calendar me-3"></i><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></div>
+                  <h3 class="card-title">{{post.data.title}}</h3>
+                  <p class="card-excerpt">{{post.data.description}}</p>
+                  <a href="{{post.url}}" class="brutal-button none">
+                    <span class="button-text">Read {{post.data.title}}</span>
+                    <div class="button-glitch"></div>
+                  </a>
+                </div>
+              </article>
+            </div>
+      {%- endfor -%}
+          </div>
+		  
+		
+</section>
+
+
+<nav aria-label="Navigasi halaman post terbaru" class="mt-5">
+  <ul class="pagination brutal-pagination justify-content-center">
+    {# Tombol Previous #}
+    {% if pagination.href.previous %}
+      <li class="page-item">
+        <a class="page-link" href="{{ pagination.href.previous }}" aria-label="Previous">
+          <i class="fa fa-angle-left"></i>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link" tabindex="-1" aria-disabled="true">
+          <i class="fa fa-angle-left"></i>
+        </span>
+      </li>
+    {% endif %}
+
+    {# Nomor halaman #}
+    {% for pageEntry in pagination.pages %}
+      {% set pageNumber = loop.index %}
+      {% set isCurrent = pageEntry == pagination.page %}
+      <li class="page-item{% if isCurrent %} active{% endif %}">
+        {% if isCurrent %}
+          <span class="page-link">{{ pageNumber }}</span>
+        {% else %}
+          <a class="page-link" href="{{ pagination.hrefs[loop.index0] }}">{{ pageNumber }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+
+    {# Tombol Next #}
+    {% if pagination.href.next %}
+      <li class="page-item">
+        <a class="page-link" href="{{ pagination.href.next }}" aria-label="Next">
+          <i class="fa fa-angle-right"></i>
+        </a>
+      </li>
+    {% else %}
+      <li class="page-item disabled">
+        <span class="page-link" tabindex="-1" aria-disabled="true">
+          <i class="fa fa-angle-right"></i>
+        </span>
+      </li>
+    {% endif %}
+  </ul>
+</nav>
+

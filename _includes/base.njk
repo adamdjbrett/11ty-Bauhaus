@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{% include "partials/seo.njk" %}
+</head>
+<body>
+<a href="#main" id="skip-link" class="visuall">Skip to main content</a>
+{% include "partials/nav.njk" %}
+{% include "partials/header.njk" %}
+<main id="main" class="main-content-wrapper">
+<div class="container py-5">
+<div class="row g-4">
+{{content|safe}}
+</div>
+</div>
+</main>
+{% include "partials/footer.njk" %}
+</body>
+</html>
