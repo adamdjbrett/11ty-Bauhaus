@@ -1,6 +1,6 @@
 # 11ty Bauhaus - Eleventy New Brutal template 
 
-A Modern New Brutal Concept Blog Style built with [11ty](https://11ty.dev) develope by [Adam DJ Brett](https://adamdjbrett.com)
+A Modern New Brutal Concept Blog Style built with [11ty](https://11ty.dev) developed by [Adam DJ Brett](https://adamdjbrett.com)
 
 ## Need help or have project ?? 
 
