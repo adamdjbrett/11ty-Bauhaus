@@ -1,4 +1,4 @@
-# Nybrutalism - Eleventy Brutalist template 
+# 11ty Bauhaus - Eleventy New Brutal template 
 
 A Modern New Brutal Concept Blog Style built with [11ty](https://11ty.dev) develope by [Adam DJ Brett](https://adamdjbrett.com)
 
@@ -18,7 +18,7 @@ A Modern New Brutal Concept Blog Style built with [11ty](https://11ty.dev) devel
 
 How to : 
 + Download Node Js
-+ Clone this repo `git clone https://github.com/adamdjbrett/11ty-nybrutalism`
++ Clone this repo `git clone https://github.com/adamdjbrett/11ty-Bauhaus`
 + Open project `cd yourproject`
 + Run Installation `npm install`
 + Run project `npm start`
