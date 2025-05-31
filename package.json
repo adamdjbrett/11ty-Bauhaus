@@ -43,7 +43,6 @@
 		"@zachleat/heading-anchors": "^1.0.1",
 		"clean-css": "^5.3.3",
 		"eleventy-plugin-toc": "^1.1.5",
-		"markdown-it": "^14.1.0",
 		"markdown-it-anchor": "^9.2.0",
 		"markdown-it-container": "^4.0.0",
 		"markdown-it-footnote": "^4.0.0",
