@@ -1,0 +1,14 @@
+---
+layout: base
+---
+  <article class="brutal-post-detail">
+      <h2 class="mega-title mb-3">{{title}}</h2>
+      
+      <figure class="brutal-featured mb-4">
+        <img src="{{image or metadata.image}}" alt="{{title or metadata.title}}" class="img-fluid img-cover brutal-img-detail rounded shadow-lg">
+      </figure>
+
+      <section class="brutal-content mb-4">
+	  {{content|safe}}
+      </section>
+    </article>

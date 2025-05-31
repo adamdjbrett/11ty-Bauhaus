@@ -1,0 +1,28 @@
+        <aside class="col-lg-4">
+          <div class="section-header">
+            <div class="brutal-section-number">02</div>
+            <h2 class="fw-bold brutal-title">{{metadata.post.popular}}<span class="blink-cursor">_</span></h2>
+          </div>
+          <ul class="list-group brutal-list">
+		  {% for po in collections.popular | limit(6) %}
+            <li class="list-group-item brutal-list-item stagger-item-pop">
+              <img src="{{po.data.image or metadata.image}}" width="40" heigth="40" style="object-fit:cover;" class="me-3 rounded-circle" alt="{{po.data.title}}">
+              <div>
+                <strong><a href="{{po.url}}" class="text-dark none">{{po.data.title}}</a></strong><br>
+                <span class="meta-pop"><time datetime="{{ po.date | htmlDateString }}">{{ po.date | readableDate }}</time> </span>
+              </div>
+            </li>
+			{% endfor %}
+          </ul>
+          <div class="brutal-quote-card mt-4 swing-in">
+		  <div class="brutal-list stagger-item">
+		  <div class="list-group-item brutal-list-item stagger-item-pop">
+            <i class="fa-solid fa-bullhorn fa-3x p-3"></i>
+            <blockquote>
+              <span class="quote-text">"{{metadata.blockquote.title}}"</span>
+              <footer><span class="meta-pop">– {{metadata.blockquote.author}}</span></footer>
+            </blockquote>
+          </div>
+          </div>
+          </div>
+        </aside>

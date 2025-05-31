@@ -1,0 +1,41 @@
+---
+layout: base
+---
+<section class="col-lg-8">
+          <div class="section-header">
+            <div class="brutal-section-number">01</div>
+            <h2 class="fw-bold brutal-title" id="recent-title">{{metadata.post.lastest}}<span class="blink-cursor">_</span></h2>
+          </div>
+          <div class="row row-cols-1 row-cols-md-2 g-4">
+           
+      {%- for post in collections.posts | head(4) -%}
+        <div class="col">
+              <article class="brutal-card stagger-item">
+                <div class="card-image-wrapper">
+                  <a href="{{post.url}}"><img src="{{post.data.image or metadata.image}}" class="card-img" alt="{{post.data.image}}"></a>
+				  {% if post.data.badge %}<div class="brutal-indicator pulse-effect">{{post.data.badge}}</div>{% endif %}
+                </div>
+                <div class="card-content">
+                  <div class="card-meta"><i class="fa-solid fa-calendar me-3"></i><time datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate }}</time></div>
+                  <h3 class="card-title">{{post.data.title}}</h3>
+                  <p class="card-excerpt">{{post.data.description}}</p>
+                  <a href="{{post.url}}" class="brutal-button none">
+                    <span class="button-text">Read {{post.data.title}}</span>
+                    <div class="button-glitch"></div>
+                  </a>
+                </div>
+              </article>
+            </div>
+      {%- endfor -%}
+          </div>
+		  
+		  
+<div class="col-md-12 text-center p-3 stagger-item">
+ <a href="/blog/" class="brutal-button none">
+<span class="button-text">{{metadata.post.button}}</span>
+<div class="button-glitch"></div>
+</a>
+</div>
+</section>
+{% include "partials/popular_post.njk" %}
+

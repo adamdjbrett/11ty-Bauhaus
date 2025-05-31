@@ -1,0 +1,39 @@
+---
+layout: base
+---
+  <article class="brutal-post-detail">
+      <h2 class="mega-title mb-3">{{title}}</h2>
+      <div class="d-flex flex-wrap align-items-center mb-3 brutal-meta">
+        {% if page.date %}<div class="me-4">
+          <i class="fa fa-calendar"></i>
+          <span class="meta-publish"><time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time></span>
+        </div>{% endif %}
+        <div class="me-4">
+          <i class="fa fa-user"></i>
+          <span class="meta-author">by <strong>{{metadata.author.name}}</strong></span>
+        </div>
+        <div class="brutal-tags d-flex flex-wrap">{% if tags %} {% for tag in tags %}{% if tag !== "posts" %}
+          <span class="badge brutal-tag me-3"><a class="text-white none" href="/tags/{{ tag }}/">#{{ tag }}</a></span>
+            {% endif %}
+          {% endfor %}{% endif %}
+        </div>
+      </div>
+      
+      <figure class="brutal-featured mb-4">
+        <img src="{{image or metadata.image}}" alt="{{title or metadata.title}}" class="img-fluid img-cover brutal-img-detail rounded shadow-lg">
+      </figure>
+
+      <section class="brutal-content mb-4">
+	  {{content|safe}}
+      </section>
+       {%- set previousPost = collections.posts | getPreviousCollectionItem %}
+      {%- set nextPost = collections.posts | getNextCollectionItem %}
+      <nav class="brutal-post-nav d-flex justify-content-between align-items-stretch mt-5">
+        {% if previousPost %}<a href="{{ previousPost.url }}" class="brutal-post-nav-item brutal-button text-decoration-none">
+          <i class="fa fa-angle-left me-1"></i> Prev
+        </a>{% endif %}
+        {% if nextPost %}<a href="{{ nextPost.url }}" class="brutal-post-nav-item brutal-button text-decoration-none">
+          Next <i class="fa fa-angle-right ms-1"></i>
+        </a>{% endif %}
+      </nav>
+    </article>
