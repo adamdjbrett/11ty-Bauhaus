@@ -1,3 +1,7 @@
+function isReduceMotion() {
+  return document.body.classList.contains('reduce-motion');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* === Custom Cursor === */
@@ -197,3 +201,48 @@ document.addEventListener('DOMContentLoaded', () => {
 
          
 
+  document.addEventListener('DOMContentLoaded', function() {
+    // Periksa preferensi pengguna sebelumnya di localStorage
+    const reduceMotionSetting = localStorage.getItem('reduceMotion');
+    const toggleButton = document.getElementById('reduceMotionToggle');
+    
+    // Terapkan pengaturan jika ada
+    if (reduceMotionSetting === 'true') {
+      document.body.classList.add('reduce-motion');
+      toggleButton.classList.add('active');
+      toggleButton.querySelector('span').textContent = 'Enable Animation';
+    }
+
+
+ toggleButton.addEventListener('click', function() {
+      const isActive = document.body.classList.toggle('reduce-motion');
+      toggleButton.classList.toggle('active', isActive);
+      
+      // Toggle label tombol agar user tahu statusnya
+      if (isActive) {
+        toggleButton.querySelector('span').textContent = 'Enable Animation';
+      } else {
+        toggleButton.querySelector('span').textContent = 'Turn Off Animation';
+      }
+      // Simpan preferensi ke localStorage
+      localStorage.setItem('reduceMotion', isActive);
+    });
+  });
+  
+  function updateCustomCursorDisplay() {
+  const isActive = document.body.classList.contains('reduce-motion');
+  document.body.style.cursor = isActive ? 'auto' : 'none';
+
+  const cursor = document.querySelector('.custom-cursor');
+  const cursorDot = document.querySelector('.custom-cursor-dot');
+  if (cursor && cursorDot) {
+    cursor.style.display = isActive ? 'none' : '';
+    cursorDot.style.display = isActive ? 'none' : '';
+  }
+}
+
+// Jalankan saat load dan saat reduce-motion berubah
+updateCustomCursorDisplay();
+
+const observer = new MutationObserver(updateCustomCursorDisplay);
+observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
